@@ -228,3 +228,30 @@ snippets
         ...
     }
 ```
+
+**Function with rest parameters (via Dynamic property):**
+```as3
+    public var sum(get, null):Dynamic;
+    private function get_sum():Dynamic {
+        return Reflect.makeVarArgs(_sum);
+    }
+    
+    private function _sum(args:Array<Dynamic>):Dynamic {
+        var res:Float = 0;
+        for (i in args) res += i;
+        return res;
+    }
+
+    trace(sum(1, 2, 3));  // 6
+    
+    /*
+    Equivalent to this AS3 code:
+    
+	public function sum(...args):Number 
+	{
+		var res:Number = 0;
+		for each (var i:Number in args) res += i;
+		return res;
+	}
+    */
+```
