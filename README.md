@@ -181,9 +181,10 @@ other gotchas/notes
  - no `Function` type (use `String -> Int` construct)
  - `Reflect.makeVarArgs()` to simulate rest parameters
  - use [`Type`](http://haxe.org/api/type) and [`Reflect`](http://haxe.org/api/reflect) static classes to get info about classes/objects
+ - `Map` can't be indexed by `Class` (but you can index by `String` and use `Type.getClassName()`)
  - `haxe.ds` package has a bunch of useful data structures
 
-what to avoid - or do (for performance reasons)
+what to avoid - or do (to improve performance)
 ---------------------------------------
  - use `Dynamic` as few as possible (type your variables - or again use `typedef`s or `Dynamic<Entity>` construct)
  - use `Int` instead of `UInt` whenever possible
@@ -204,4 +205,27 @@ snippets
 		array.splice(0, array.length);
 	#end
 	}
+```
+
+**Static initialization (simple method):**
+```as3
+    class Utils {
+        
+        private static inline var _init:Bool = initStaticVars();
+        
+        public static var lookupTable:Array<Float>;
+        
+        public static inline var VERSION:String = "0.1";
+        
+        public static var PI:Float;
+        
+        
+        private static inline function initStaticVars():Bool {
+            lookupTable = new Array<Float>();
+            ...
+            PI = Math.PI;
+        }
+        
+        ...
+    }
 ```
