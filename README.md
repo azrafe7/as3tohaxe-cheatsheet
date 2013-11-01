@@ -47,7 +47,7 @@ arrays/vectors and dictionaries
 
  | AS3                             | Haxe 3                        |
  | ------------------------------- |:-----------------------------:|
- | :Vector.<T>                     | :Array\<T>                     |
+ | :Vector.\<T>                     | :Array\<T>                     |
 
 [`Array`](http://haxe.org/api/array)s in haxe can't take an optional parameter to specify the initial size.
 
