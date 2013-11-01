@@ -211,19 +211,18 @@ snippets
 ```as3
     class Utils {
         
-        private static inline var _init:Bool = initStaticVars();
+        private static inline var _inited:Bool = initStaticVars();
         
         public static var lookupTable:Array<Float>;
-        
         public static inline var VERSION:String = "0.1";
-        
         public static var PI:Float;
-        
         
         private static inline function initStaticVars():Bool {
             lookupTable = new Array<Float>();
             ...
             PI = Math.PI;
+            
+            return true;
         }
         
         ...
